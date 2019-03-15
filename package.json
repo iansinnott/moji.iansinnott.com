@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "emoji-zh-site",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Emoji in Chinese!",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Ian Sinnott <ian@iansinnott.com>",
   "dependencies": {
     "gatsby": "^2.1.31",
     "gatsby-image": "^2.0.33",
@@ -22,9 +22,10 @@
     "prettier": "^1.16.4"
   },
   "keywords": [
-    "gatsby"
+    "chinese",
+    "emoji"
   ],
-  "license": "MIT",
+  "license": "UNLICENSED",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -35,9 +36,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/iansinnott/moji.iansinnott.com"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/iansinnott/moji.iansinnott.com/issues"
   }
 }
