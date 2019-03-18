@@ -3406,6 +3406,11 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+emoji-annotations@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/emoji-annotations/-/emoji-annotations-1.0.3.tgz#9909099b97bc243b40277f3232cf9c9f63ab6c89"
+  integrity sha512-uDSier/lv0S3RkS016IwtF8vRYhJaJmE0ndKIPaVKqA2Q5VL2kLzXDGybx4k9cnxTOfxF/aCoLJ6xDPQK/cgtw==
+
 emoji-regex@^7.0.1, emoji-regex@^7.0.2:
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-7.0.3.tgz#933a04052860c85e83c122479c4748a8e4c72156"
