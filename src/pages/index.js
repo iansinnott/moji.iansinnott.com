@@ -38,7 +38,7 @@ class IndexPage extends React.Component {
   render() {
     const result = lookup(this.state.value);
     const resultCount = Object.keys(result).reduce((count, k) => count + result[k].length, 0);
-    const keys = ['en', 'cn', 'tw'];
+    const keys = ['tw', 'cn', 'en'];
     const flagDict = {
       'tw': '🇹🇼',
       'cn': '🇨🇳',

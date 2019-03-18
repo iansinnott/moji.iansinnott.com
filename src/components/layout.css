@@ -279,7 +279,7 @@ h4 {
   padding-left: 0;
   padding-right: 0;
   padding-top: 0;
-  margin-bottom: 0;
+  margin-bottom: .5em;
   color: inherit;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -623,6 +623,7 @@ pre tt:after {
 
 .annotations {
   margin-bottom: 1.5rem;
+  line-height: 1.5;
 }
 .input {
   width: 100%;
@@ -631,4 +632,5 @@ pre tt:after {
 .item {
   display: inline-block;
   padding-right: 1em;
+  font-size: 1.3em;
 }
