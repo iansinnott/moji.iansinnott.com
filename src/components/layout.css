@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -621,6 +624,12 @@ pre tt:after {
   }
 }
 
+.Layout {
+  margin: 0 auto;
+  max-width: 500px;
+  min-width: 320px;
+  padding: 1.5em;
+}
 footer {
   opacity: 0.7;
   font-size: 0.8em;
@@ -629,12 +638,43 @@ footer {
   margin-bottom: 1.5rem;
   line-height: 1.5;
 }
+.Form {
+  width: 80px;
+  flex-shrink: 0;
+  flex-grow: 0;
+}
 .input {
+  padding: 0px;
+  font-size: 3em;
+  text-align: center;
   width: 100%;
-  padding: 5px;
+  line-height: 80px;
+  border: none;
+  appearance: none;
+  box-shadow: 0 0 1px #666;
+}
+.input:focus {
+  box-shadow: 0 0 1px blue;
 }
 .item {
   display: inline-block;
   padding-right: 1em;
   font-size: 1.3em;
+}
+.showHidden {
+  margin-bottom: 1em;
+  appearance: none;
+  padding: 5px;
+  border: 1px solid #666;
+  opacity: 0.6;
+  text-align: center;
+  width: 100%;
+}
+.description {
+  flex-grow: 1;
+  margin-left: 1em;
+}
+.inputArea {
+  display: flex;
+  justify-content: space-between;
 }

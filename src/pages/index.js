@@ -7,12 +7,12 @@ import lookup from '../components/lookup.js';
 
 const Form = props => {
   return (
-    <form onSubmit={e => e.preventDefault()}>
+    <form className='Form' onSubmit={e => e.preventDefault()}>
       <input
         className='input'
         value={props.value}
         type='text'
-        placeholder='Emoji!'
+        placeholder=''
         onChange={e => props.onChange(e.target.value)}
       />
     </form>
@@ -29,10 +29,23 @@ const AnnotationSection = ({ icon, children }) => (
 class IndexPage extends React.Component {
   state = {
     value: '',
+    showHidden: false,
   };
 
+  /**
+   * NOTE: Replacement is done so that this input only takes a string of length
+   * 1, without having to actually rely on the length property since that
+   * requires additional attention when dealing with multi-byte characters like
+   * emoji.
+   */
   handleChange = value => {
-    this.setState(() => ({ value }));
+    this.setState(() => ({
+     value: value.trim().replace(this.state.value, '')
+    }));
+  };
+
+  toggleShow = e => {
+    this.setState(state => ({ showHidden: !state.showHidden }));
   };
 
   render() {
@@ -48,20 +61,30 @@ class IndexPage extends React.Component {
     return (
       <Layout>
         <SEO title='Home' keywords={[`chinese`, `emoji`]} />
-        <h1>Emoji in Chinese!</h1>
-        <h3>What...?</h3>
-        <p>
-          The Chinese keyboards on iOS are great for inserting emoji into text.
-          But how do you say those emotions in Chinese? Enter an emoji and find
-          out!
-        </p>
-        <Form onChange={this.handleChange} value={this.state.value} />
+        <section className='inputArea'>
+          <Form onChange={this.handleChange} value={this.state.value} />
+          <div className='description'>
+            <p>Enter an emoji on the left 👈</p>
+          </div>
+        </section>
         <div style={{ paddingBottom: '1em' }} className='emoji'>
           {!!resultCount && keys.map(k => (
             <AnnotationSection key={k} icon={flagDict[k]}>
-              {result[k].map(text => <span key={text} class="item">{text}</span>)}
+              {result[k].map(text => <span key={text} className="item">{text}</span>)}
             </AnnotationSection>
           ))}
+        </div>
+        <button onClick={this.toggleShow} className='showHidden'>
+          What is this?
+        </button>
+        <div className='hidden' style={{ opacity: this.state.showHidden ? 1 : 0 }}>
+          <h1>Emoji in Chinese!</h1>
+          <h3>What...?</h3>
+          <p>
+            The Chinese keyboards on iOS are great for inserting emoji into text.
+            But how do you say those emotions in Chinese? Enter an emoji and find
+            out!
+          </p>
         </div>
       </Layout>
     );
