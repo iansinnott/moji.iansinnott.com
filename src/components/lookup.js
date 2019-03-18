@@ -1,11 +1,10 @@
-const words = require('./emoji_words.json');
+const { language } = require('emoji-annotations');
 
 module.exports = (chr) => {
-  const list = words[chr];
-
-  if (!list) return [];
-
-  list.slice().sort();
-
-  return list;
+  return Object.keys(language).reduce((agg, k) => {
+    return {
+      ...agg,
+      [k]: language[k][chr] || []
+    };
+  }, {})
 };

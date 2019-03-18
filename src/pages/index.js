@@ -9,6 +9,7 @@ const Form = props => {
   return (
     <form onSubmit={e => e.preventDefault()}>
       <input
+        className='input'
         value={props.value}
         type='text'
         placeholder='Emoji!'
@@ -17,6 +18,13 @@ const Form = props => {
     </form>
   );
 };
+
+const AnnotationSection = ({ icon, children }) => (
+  <section className='annotations'>
+    <h4>{icon}</h4>
+    <div>{children}</div>
+  </section>
+);
 
 class IndexPage extends React.Component {
   state = {
@@ -28,6 +36,15 @@ class IndexPage extends React.Component {
   };
 
   render() {
+    const result = lookup(this.state.value);
+    const resultCount = Object.keys(result).reduce((count, k) => count + result[k].length, 0);
+    const keys = ['en', 'cn', 'tw'];
+    const flagDict = {
+      'tw': '🇹🇼',
+      'cn': '🇨🇳',
+      'en': '🇺🇸',
+    };
+
     return (
       <Layout>
         <SEO title='Home' keywords={[`chinese`, `emoji`]} />
@@ -40,8 +57,10 @@ class IndexPage extends React.Component {
         </p>
         <Form onChange={this.handleChange} value={this.state.value} />
         <div style={{ paddingBottom: '1em' }} className='emoji'>
-          {lookup(this.state.value).map(x => (
-            <div key={x} class="item">{x}</div>
+          {!!resultCount && keys.map(k => (
+            <AnnotationSection key={k} icon={flagDict[k]}>
+              {result[k].map(text => <span key={text} class="item">{text}</span>)}
+            </AnnotationSection>
           ))}
         </div>
       </Layout>
