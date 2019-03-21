@@ -1,10 +1,20 @@
-const { language } = require('emoji-annotations');
+import { language } from 'emoji-annotations';
 
-module.exports = (chr) => {
+import { path } from './utils.js';
+import supplemental from './supplemental_annotations.json';
+
+const lookup = chr => {
   return Object.keys(language).reduce((agg, k) => {
+    let results = language[k][chr] || [];
+    const supplement = path([k, chr], supplemental);
+
+    if (supplement) results = results.concat(supplement);
+
     return {
       ...agg,
-      [k]: language[k][chr] || []
+      [k]: results,
     };
-  }, {})
+  }, {});
 };
+
+export default lookup;
